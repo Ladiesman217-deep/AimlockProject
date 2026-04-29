@@ -3,5 +3,8 @@ local Library = {}
 function Library:MakeLiner()
     return Drawing.new('Line')
 end
+function Library:MakeCircle()
+    return Drawing.new('Line')
+end
 
 return Library
