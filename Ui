@@ -87,7 +87,6 @@ Toggles.FovToggle:OnChanged(function()
     getgenv().SilentAimConfig.FovEnabled = Toggles.FovToggle.Value
 end)
 
-
 Options.MethodAim:OnChanged(function()
     print('Dropdown got changed. New value:', Options.MethodAim.Value)
     getgenv().SilentAimConfig.MethodAim = Options.MethodAim.Value
@@ -97,6 +96,12 @@ Options.HitPart:OnChanged(function()
     print('Dropdown got changed. New value:', Options.HitPart.Value)
     getgenv().SilentAimConfig.HitPart = Options.HitPart.Value
 end)
+
+Options.FovSlider:OnChanged(function()
+    print('FovSlider was changed! New value:', Options.FovSlider.Value)
+    getgenv().SilentAimConfig.Fov = Options.FovSlider.Value
+end)
+
 
 
 Library.KeybindFrame.Visible = false; 
