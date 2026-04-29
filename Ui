@@ -82,6 +82,9 @@ Options.LockKeyBind:OnClick(function()
     Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
+Options.FovToggle:OnChanged(function()
+    getgenv().SilentAimConfig.FovEnabled = Options.FovToggle.Value
+end)
 
 Options.MethodAim:OnChanged(function()
     print('Dropdown got changed. New value:', Options.MethodAim.Value)
