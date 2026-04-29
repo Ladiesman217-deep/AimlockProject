@@ -82,6 +82,7 @@ Options.LockKeyBind:OnClick(function()
     Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
+
 Toggles.FovToggle:OnChanged(function()
     print('fgdgddgdgdgfdgdggdf')
 
