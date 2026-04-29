@@ -31,7 +31,7 @@ LeftSilentAim:AddToggle('SilentAimToggle', {
 })
 
 LeftSilentAim:AddToggle('FovToggle', {
-    Text = 'Fov Enabled',
+    Text = 'Fov Visible',
     Default = false,
 })
 
@@ -83,10 +83,7 @@ Options.LockKeyBind:OnClick(function()
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
-Toggles.FovToggle:OnChanged(function()
-    -- here we get our toggle object & then get its value
-    print('FovToggle changed to:', Toggles.FovToggle.Value)
-end)
+print(Toggles.FovToggle.Value)
 
 Options.MethodAim:OnChanged(function()
     print('Dropdown got changed. New value:', Options.MethodAim.Value)
