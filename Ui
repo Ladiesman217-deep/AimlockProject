@@ -88,6 +88,11 @@ Options.MethodAim:OnChanged(function()
     getgenv().SilentAimConfig.MethodAim = Options.MethodAim.Value
 end)
 
+Options.HitPart:OnChanged(function()
+    print('Dropdown got changed. New value:', Options.HitPart.Value)
+    getgenv().SilentAimConfig.HitPart = Options.HitPart.Value
+end)
+
 
 Library.KeybindFrame.Visible = false; 
 
