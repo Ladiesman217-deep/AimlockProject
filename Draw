@@ -1,0 +1,7 @@
+local Library = {}
+
+function Library:MakeLiner()
+    return Drawing.new('Line')
+end
+
+return Library
