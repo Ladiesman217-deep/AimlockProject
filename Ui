@@ -5,7 +5,7 @@ local ThemeManager = loadstring(game:HttpGet(base .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(base .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = 'RaceCodex',
+    Title = 'Raycodex',
     Center = true, 
     AutoShow = true,
 })
@@ -16,30 +16,23 @@ local Tabs = {
     ['UI Settings'] = Window:AddTab('UI Settings'),
 }
 
-
-
 local LeftSilentAim = Tabs.Main:AddLeftGroupbox('Silent Aim')
+local Checks = Tabs.Main:AddRightGroupbox('Checks')
 
 LeftSilentAim:AddToggle('SilentAimToggle', {
     Text = 'Silent Aim',
     Default = false,
+}):AddKeyPicker('LockKeyBind', {
+    Default = '..', 
+    SyncToggleState = false, 
+    Mode = 'Toggle',
+    Text = 'Nun',
+    NoUI = false,
 })
 
 LeftSilentAim:AddToggle('FovToggle', {
     Text = 'Fov Enabled',
     Default = false,
-})
-
-LeftSilentAim:AddToggle('LockTarget', {
-    Text = 'Lock Target',
-    Default = false,
-    Tooltip = 'Locking Current Target',
-}):AddKeyPicker('LockKeyBind', {
-    Default = 'T', 
-    SyncToggleState = false, 
-    Mode = 'Toggle',
-    Text = 'Nun',
-    NoUI = false,
 })
 
 LeftSilentAim:AddSlider('FovSlider', {
@@ -65,16 +58,36 @@ LeftSilentAim:AddDropdown('Method', {
     Text = 'Method',
 })
 
+LeftSilentAim:AddDropdown('MethodAim', {
+    Values = { 'FreeForAll', 'Toggled' },
+    Default = 1,
+    Multi = false,
+    Text = 'AimMethod',
+})
+
+
+Checks:AddToggle('KO', {
+    Text = 'K.O',
+    Default = false,
+})
+
+Checks:AddToggle('Grabbed', {
+    Text = 'Grabbed',
+    Default = false,
+})
+
+
+
 Options.LockKeyBind:OnClick(function()
-    Toggles.LockTarget:SetValue(not Toggles.LockTarget.Value)
+    Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
+    getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
+Options.MethodAim:OnChanged(function()
+    print('Dropdown got changed. New value:', Options.MethodAim.Value)
+    getgenv().SilentAimConfig.MethodAim = Options.MethodAim.Value
+end)
 
-
-
-Library:SetWatermarkVisibility(false)
-
-Library:SetWatermark('@raycodex are best')
 
 Library.KeybindFrame.Visible = false; 
 
