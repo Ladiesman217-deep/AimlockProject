@@ -1,10 +1,15 @@
 local Library = {}
 
 function Library:MakeLiner()
-    return Drawing.new('Line')
+    local line = Drawing.new('Line')
+    line.Visible = false
+    return line
 end
+
 function Library:MakeCircle()
-    return Drawing.new('Line')
+    local circle = Drawing.new('Circle') 
+    circle.Visible = false
+    return circle
 end
 
 return Library
