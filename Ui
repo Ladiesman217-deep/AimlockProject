@@ -19,6 +19,7 @@ local Tabs = {
 local LeftSilentAim = Tabs.Main:AddLeftGroupbox('Silent Aim')
 local Visual = Tabs.Main:AddLeftGroupbox('Visual')
 local Checks = Tabs.Main:AddRightGroupbox('Checks')
+local Rage = Tabs.Main:AddRightGroupbox('Rage')
 
 LeftSilentAim:AddToggle('SilentAimToggle', {
     Text = 'Silent Aim',
@@ -87,9 +88,29 @@ Visual:AddToggle('HitPart', {
     Default = false,
 })
 
+Rage:AddToggle('CamOn', {
+    Text = 'Camera On Target',
+    Default = false,
+}):AddKeyPicker('CamKeybind', {
+    Default = '..', 
+    SyncToggleState = false, 
+    Mode = 'Toggle',
+    Text = 'Nun',
+    NoUI = false,
+})
+
 Options.LockKeyBind:OnClick(function()
     Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
+end)
+
+Options.CamKeybind:OnClick(function()
+    Toggles.SilentCamOnimToggle:SetValue(not Toggles.CamOn.Value)
+    getgenv().Rage.Cameraon = Toggles.CamOn.Value
+end)
+
+Toggles.CamOn:OnChanged(function()
+    getgenv().Rage.Cameraon = Toggles.CamOn.Value
 end)
 
 Toggles.SilentAimToggle:OnChanged(function()
@@ -97,7 +118,6 @@ Toggles.SilentAimToggle:OnChanged(function()
 end)
 
 Toggles.KO:OnChanged(function()
-    print('gfdgdfgdfgdfgd')
     getgenv().Checks.KO = Toggles.KO.Value
 end)
 
