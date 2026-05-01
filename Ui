@@ -82,6 +82,11 @@ Visual:AddToggle('Tracer', {
     Default = true,
 })
 
+Visual:AddToggle('HitPart', {
+    Text = 'HitPart',
+    Default = false,
+})
+
 Options.LockKeyBind:OnClick(function()
     Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
@@ -91,6 +96,10 @@ Toggles.SilentAimToggle:OnChanged(function()
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
+Toggles.HitPart:OnChanged(function()
+    getgenv().Visuals.HitPart = Toggles.HitPart.Value
+end)
+
 Toggles.FovToggle:OnChanged(function()
     getgenv().SilentAimConfig.FovEnabled = Toggles.FovToggle.Value
 end)
@@ -98,7 +107,6 @@ end)
 Toggles.Tracer:OnChanged(function()
     getgenv().Visuals.Tracer = Toggles.Tracer.Value
 end)
-
 
 Options.MethodAim:OnChanged(function()
     print('Dropdown got changed. New value:', Options.MethodAim.Value)
