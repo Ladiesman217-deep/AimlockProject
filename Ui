@@ -96,6 +96,11 @@ Toggles.SilentAimToggle:OnChanged(function()
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
+Toggles.KO:OnChanged(function()
+    print('gfdgdfgdfgdfgd')
+    getgenv().Checks.KO = Toggles.KO.Value
+end)
+
 Toggles.HitPart:OnChanged(function()
     getgenv().Visuals.HitPart = Toggles.HitPart.Value
 end)
