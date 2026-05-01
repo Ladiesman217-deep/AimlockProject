@@ -105,7 +105,7 @@ Options.LockKeyBind:OnClick(function()
 end)
 
 Options.CamKeybind:OnClick(function()
-    Toggles.SilentCamOnimToggle:SetValue(not Toggles.CamOn.Value)
+    Toggles.CamOn:SetValue(not Toggles.CamOn.Value)
     getgenv().Rage.Cameraon = Toggles.CamOn.Value
 end)
 
