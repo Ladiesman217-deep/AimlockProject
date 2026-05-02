@@ -113,9 +113,9 @@ Rage:AddToggle('Orbit', {
 
 Rage:AddSlider('OrbitSpeed', {
     Text = 'Orbit Speed',
-    Default = 2,
+    Default = 5,
     Min = 1,
-    Max = 5,
+    Max = 10,
     Rounding = 0,
     Compact = false,
 })
