@@ -111,6 +111,11 @@ Rage:AddToggle('Orbit', {
     NoUI = false,
 })
 
+Rage:AddToggle('Stomp', {
+    Text = 'Stomp On Down',
+    Default = false,
+})
+
 Rage:AddSlider('OrbitSpeed', {
     Text = 'Orbit Speed',
     Default = 5,
@@ -177,6 +182,10 @@ end)
 
 Toggles.CamOn:OnChanged(function()
     getgenv().Rage.Cameraon = Toggles.CamOn.Value
+end)
+
+Toggles.Stomp:OnChanged(function()
+    getgenv().Rage.Stomp = Toggles.Stomp.Value
 end)
 
 Options.OrbitEnabled:OnClick(function()
