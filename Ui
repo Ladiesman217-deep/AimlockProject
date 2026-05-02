@@ -122,8 +122,8 @@ Rage:AddSlider('OrbitSpeed', {
 
 Rage:AddSlider('OrbitX', {
     Text = 'Orbit X',
-    Default = 0,
-    Min = 0,
+    Default = 5,
+    Min = 1,
     Max = 10,
     Rounding = 0,
     Compact = false,
@@ -131,8 +131,8 @@ Rage:AddSlider('OrbitX', {
 
 Rage:AddSlider('OrbitZ', {
     Text = 'Orbit Z',
-    Default = 0,
-    Min = 0,
+    Default = 5,
+    Min = 1,
     Max = 10,
     Rounding = 0,
     Compact = false,
@@ -140,22 +140,20 @@ Rage:AddSlider('OrbitZ', {
 
 Rage:AddSlider('OrbitY', {
     Text = 'Orbit Y',
-    Default = 0,
-    Min = 0,
+    Default = 5,
+    Min = 1,
     Max = 10,
     Rounding = 0,
     Compact = false,
 })
 
 Shop:AddToggle('Armor', {
-    Text = 'AutoArmor',
+    Text = 'Auto Armor',
     Default = false,
 })
 
 
-
-
---Rage---
+-- <- Rage -> --
 
 Options.OrbitSpeed:OnChanged(function()
     getgenv().Rage.Orbit.Speed = Options.OrbitSpeed.Value
@@ -164,11 +162,11 @@ end)
 Options.OrbitZ:OnChanged(function()
     getgenv().Rage.Orbit.Position.Z = Options.OrbitZ.Value
 end)
-Options.OrbitZ:OnChanged(function()
+Options.OrbitY:OnChanged(function()
     getgenv().Rage.Orbit.Position.Y = Options.OrbitZ.Value
 end)
 
-Options.OrbitZ:OnChanged(function()
+Options.OrbitX:OnChanged(function()
     getgenv().Rage.Orbit.Position.X = Options.OrbitZ.Value
 end)
 
@@ -186,12 +184,24 @@ Options.OrbitEnabled:OnClick(function()
     getgenv().Rage.Orbit.IsEnabled = Toggles.Orbit.Value
 end)
 
+-- <- Rage End -> --
 
 
---- End ---
 
 
 
+-- <- Shop -> --
+
+Toggles.Armor:OnChanged(function()
+    getgenv().Shop.AutoArmor = Toggles.Armor.Value
+end)
+
+
+
+-- <- Shop End -> --
+
+
+-- <- Silent Aim -> --
 
 Options.LockKeyBind:OnClick(function()
     Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
@@ -199,49 +209,55 @@ Options.LockKeyBind:OnClick(function()
 end)
 
 
-Toggles.Armor:OnChanged(function()
-    getgenv().Shop.AutoArmor = Toggles.Armor.Value
-end)
-
 Toggles.SilentAimToggle:OnChanged(function()
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
 Toggles.SilentAimToggle:OnChanged(function()
     getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
-end)
-
-Toggles.KO:OnChanged(function()
-    getgenv().Checks.KO = Toggles.KO.Value
-end)
-
-Toggles.HitPart:OnChanged(function()
-    getgenv().Visuals.HitPart = Toggles.HitPart.Value
 end)
 
 Toggles.FovToggle:OnChanged(function()
     getgenv().SilentAimConfig.FovEnabled = Toggles.FovToggle.Value
 end)
 
-Toggles.Tracer:OnChanged(function()
-    getgenv().Visuals.Tracer = Toggles.Tracer.Value
-end)
-
 Options.MethodAim:OnChanged(function()
-    print('Dropdown got changed. New value:', Options.MethodAim.Value)
     getgenv().SilentAimConfig.MethodAim = Options.MethodAim.Value
 end)
 
 Options.HitPart:OnChanged(function()
-    print('Dropdown got changed. New value:', Options.HitPart.Value)
     getgenv().SilentAimConfig.HitPart = Options.HitPart.Value
 end)
 
 Options.FovSlider:OnChanged(function()
-    print('FovSlider was changed! New value:', Options.FovSlider.Value)
     getgenv().SilentAimConfig.Fov = Options.FovSlider.Value
 end)
 
+-- <- Silent Aim End -> --
+
+
+-- <- Visuals -> --
+
+Toggles.HitPart:OnChanged(function()
+    getgenv().Visuals.HitPart = Toggles.HitPart.Value
+end)
+
+Toggles.Tracer:OnChanged(function()
+    getgenv().Visuals.Tracer = Toggles.Tracer.Value
+end)
+
+
+-- <- Visuals End -> --
+
+
+-- <- Checks -> --
+
+Toggles.KO:OnChanged(function()
+    getgenv().Checks.KO = Toggles.KO.Value
+end)
+
+
+-- <- Checks End -> --
 
 
 Library.KeybindFrame.Visible = false; 
