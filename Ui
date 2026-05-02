@@ -163,11 +163,11 @@ Options.OrbitZ:OnChanged(function()
     getgenv().Rage.Orbit.Position.Z = Options.OrbitZ.Value
 end)
 Options.OrbitY:OnChanged(function()
-    getgenv().Rage.Orbit.Position.Y = Options.OrbitZ.Value
+    getgenv().Rage.Orbit.Position.Y = Options.OrbitY.Value
 end)
 
 Options.OrbitX:OnChanged(function()
-    getgenv().Rage.Orbit.Position.X = Options.OrbitZ.Value
+    getgenv().Rage.Orbit.Position.X = Options.OrbitX.Value
 end)
 
 Options.CamKeybind:OnClick(function()
