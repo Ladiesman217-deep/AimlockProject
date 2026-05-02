@@ -20,6 +20,7 @@ local LeftSilentAim = Tabs.Main:AddLeftGroupbox('Silent Aim')
 local Visual = Tabs.Main:AddLeftGroupbox('Visual')
 local Checks = Tabs.Main:AddRightGroupbox('Checks')
 local Rage = Tabs.Main:AddRightGroupbox('Rage')
+local Shop = Tabs.Misc:AddLeftGroupbox('Shop')
 
 LeftSilentAim:AddToggle('SilentAimToggle', {
     Text = 'Silent Aim',
@@ -99,9 +100,76 @@ Rage:AddToggle('CamOn', {
     NoUI = false,
 })
 
-Options.LockKeyBind:OnClick(function()
-    Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
-    getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
+Rage:AddToggle('Orbit', {
+    Text = 'Orbit',
+    Default = false,
+}):AddKeyPicker('OrbitEnabled', {
+    Default = '..', 
+    SyncToggleState = false, 
+    Mode = 'Toggle',
+    Text = 'Nun',
+    NoUI = false,
+})
+
+Rage:AddSlider('OrbitSpeed', {
+    Text = 'Orbit Speed',
+    Default = 2,
+    Min = 1,
+    Max = 5,
+    Rounding = 0,
+    Compact = false,
+})
+
+Rage:AddSlider('OrbitX', {
+    Text = 'Orbit X',
+    Default = 0,
+    Min = 0,
+    Max = 10,
+    Rounding = 0,
+    Compact = false,
+})
+
+Rage:AddSlider('OrbitZ', {
+    Text = 'Orbit Z',
+    Default = 0,
+    Min = 0,
+    Max = 10,
+    Rounding = 0,
+    Compact = false,
+})
+
+Rage:AddSlider('OrbitY', {
+    Text = 'Orbit Y',
+    Default = 0,
+    Min = 0,
+    Max = 10,
+    Rounding = 0,
+    Compact = false,
+})
+
+Shop:AddToggle('Armor', {
+    Text = 'AutoArmor',
+    Default = false,
+})
+
+
+
+
+--Rage---
+
+Options.OrbitSpeed:OnChanged(function()
+    getgenv().Rage.Orbit.Speed = Options.OrbitSpeed.Value
+end)
+
+Options.OrbitZ:OnChanged(function()
+    getgenv().Rage.Orbit.Position.Z = Options.OrbitZ.Value
+end)
+Options.OrbitZ:OnChanged(function()
+    getgenv().Rage.Orbit.Position.Y = Options.OrbitZ.Value
+end)
+
+Options.OrbitZ:OnChanged(function()
+    getgenv().Rage.Orbit.Position.X = Options.OrbitZ.Value
 end)
 
 Options.CamKeybind:OnClick(function()
@@ -111,6 +179,32 @@ end)
 
 Toggles.CamOn:OnChanged(function()
     getgenv().Rage.Cameraon = Toggles.CamOn.Value
+end)
+
+Options.OrbitEnabled:OnClick(function()
+    Toggles.Orbit:SetValue(not Toggles.Orbit.Value)
+    getgenv().Rage.Orbit.IsEnabled = Toggles.Orbit.Value
+end)
+
+
+
+--- End ---
+
+
+
+
+Options.LockKeyBind:OnClick(function()
+    Toggles.SilentAimToggle:SetValue(not Toggles.SilentAimToggle.Value)
+    getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
+end)
+
+
+Toggles.Armor:OnChanged(function()
+    getgenv().Shop.AutoArmor = Toggles.Armor.Value
+end)
+
+Toggles.SilentAimToggle:OnChanged(function()
+    getgenv().SilentAimConfig.Enabled = Toggles.SilentAimToggle.Value
 end)
 
 Toggles.SilentAimToggle:OnChanged(function()
