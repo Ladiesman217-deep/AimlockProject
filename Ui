@@ -188,6 +188,10 @@ Toggles.Stomp:OnChanged(function()
     getgenv().Rage.Stomp = Toggles.Stomp.Value
 end)
 
+Toggles.Orbit:OnChanged(function()
+    getgenv().Rage.Orbit.IsEnabled = Toggles.Orbit.Value
+end)
+
 Options.OrbitEnabled:OnClick(function()
     Toggles.Orbit:SetValue(not Toggles.Orbit.Value)
     getgenv().Rage.Orbit.IsEnabled = Toggles.Orbit.Value
