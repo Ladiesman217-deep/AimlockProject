@@ -230,6 +230,10 @@ Toggles.FovToggle:OnChanged(function()
     getgenv().SilentAimConfig.FovEnabled = Toggles.FovToggle.Value
 end)
 
+Options.Method:OnChanged(function()
+    getgenv().SilentAimConfig.Method = Options.Method.Value
+end)
+
 Options.MethodAim:OnChanged(function()
     getgenv().SilentAimConfig.MethodAim = Options.MethodAim.Value
 end)
